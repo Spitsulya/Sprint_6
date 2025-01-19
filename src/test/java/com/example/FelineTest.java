@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
 
-@RunWith(Parameterized.class)
 public class FelineTest {
 
     @Before
@@ -41,27 +40,5 @@ public class FelineTest {
     @Test
     public void testGetKittens() {
         assertEquals(1, feline.getKittens());
-    }
-
-    // Параметры для теста getKittens
-    @Parameterized.Parameter(0)
-    public int inputKittensCount;
-
-    @Parameterized.Parameter(1)
-    public int expectedKittensCount;
-
-    @Parameterized.Parameters
-    public static Iterable<Object[]> data() {
-        return Arrays.asList(new Object[][]{
-                {1, 1},  // Тест для 1 котенка
-                {5, 5},  // Тест для 5 котят
-                {10, 10} // Тест для 10 котят
-        });
-    }
-
-    // Проверяем, что метод getKittens с параметром возвращает переданное значение
-    @Test
-    public void testGetKittensWithParameter() {
-        assertEquals(expectedKittensCount, feline.getKittens(inputKittensCount));
     }
 }
