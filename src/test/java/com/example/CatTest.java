@@ -23,7 +23,7 @@ public class CatTest {
         // Проверяем, что метод getFood возвращает ожидаемый список
         Cat cat = new Cat(feline);
         List<String> actualFood = cat.getFood();
-        assertEquals(expectedFood, actualFood);
+        assertEquals("Список пищи должен совпадать с ожидаемым", expectedFood, actualFood);
     }
 
     // Проверяем, что класс Cat правильно возвращает звук
@@ -31,7 +31,7 @@ public class CatTest {
     public void testGetSound() {
         Cat cat = new Cat(feline);
         // Проверяем, что метод getSound возвращает "Мяу"
-        assertEquals("Мяу", cat.getSound());
+        assertEquals("Коты должны мяукать", "Мяу", cat.getSound());
     }
 }
 
