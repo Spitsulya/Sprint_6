@@ -16,7 +16,7 @@ public class FelineParameterizedTest {
     @Parameterized.Parameter(1)
     public int expectedKittensCount;
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Тестовые данные: ФР кол-ва котят = {0}, ОР кол-ва котят = {1}")
     public static Iterable<Object[]> data() {
         return Arrays.asList(new Object[][]{
                 {1, 1},  // Тест для 1 котенка
