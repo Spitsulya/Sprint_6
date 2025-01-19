@@ -1,8 +1,6 @@
 package com.example;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import java.util.Arrays;
@@ -33,12 +31,12 @@ public class FelineTest {
     @Test
 
     public void testGetFamily() {
-        assertEquals("Кошачьи", feline.getFamily());
+        assertEquals("Принадлежит семейству: кошачьи.", "Кошачьи", feline.getFamily());
     }
 
     // Проверяем, что метод getKittens без параметров возвращает 1
     @Test
     public void testGetKittens() {
-        assertEquals(1, feline.getKittens());
+        assertEquals("Количество котят должно быть равно: 1.", 1, feline.getKittens());
     }
 }
