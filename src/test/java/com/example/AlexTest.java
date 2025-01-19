@@ -23,26 +23,26 @@ public class AlexTest {
     // Проверяем, что конструктор создает экземпляр класса
     @Test
     public void testConstructor() throws Exception {
-        assertEquals(alex.getClass(), Alex.class);
+        assertEquals("Объект должен совпадать с классом.", alex.getClass(), Alex.class);
     }
 
     // Проверяем, с кем дружит Алекс
     @Test
     public void testGetFriends() throws Exception {
         List<String> expectedFriendsResult = List.of("Марти", "Глория", "Мелман");
-        assertEquals(expectedFriendsResult, alex.getFriends());
+        assertEquals("Список друзей должен совпадать с ожидаемым.", expectedFriendsResult, alex.getFriends());
     }
 
     // Проверяем, где живет Алекс
     @Test
     public void testGetPlaceOfLiving() {
-        assertEquals("Нью-Йоркский зоопарк", alex.getPlaceOfLiving());
+        assertEquals("Место проживания должно совпадать с ожидаемым.","Нью-Йоркский зоопарк", alex.getPlaceOfLiving());
     }
 
     // Проверяем, что у Алекса не может быть котят
     @Test
     public void testGetKittens() {
-    assertEquals(0, alex.getKittens());
+    assertEquals("Алекс не должен иметь львят.",0, alex.getKittens());
     }
 
 
