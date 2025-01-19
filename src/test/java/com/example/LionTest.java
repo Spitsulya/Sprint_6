@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 
 @RunWith(Parameterized.class)
@@ -19,7 +18,6 @@ public class LionTest {
     private Lion lion;
     private String sex;
     private boolean expectedHasMane;
-    private boolean shouldThrowException;
 
     @Before
     public void init() {
@@ -28,45 +26,31 @@ public class LionTest {
     }
 
     // Параметризованный конструктор
-    public LionTest(String sex, boolean expectedHasMane, boolean shouldThrowException) {
+    public LionTest(String sex, boolean expectedHasMane) {
         this.sex = sex;
         this.expectedHasMane = expectedHasMane;
-        this.shouldThrowException = shouldThrowException;
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
-                { "Самец", true, false },   // Ожидаем, что у самца будет грива
-                { "Самка", false, false },   // Ожидаем, что у самки не будет гривы
-                { "Мужской", false, true }   // Ожидаем выброс исключения
+                { "Самец", true},   // Ожидаем, что у самца будет грива
+                { "Самка", false},   // Ожидаем, что у самки не будет гривы
         });
     }
 
-    // Проверяем, что у льва есть грива/нет гривы/исключение
+    // Проверяем, что у льва есть грива
     @Test
     public void testLionHasMane() throws Exception {
-        if (shouldThrowException) {
-            try {
-                lion = new Lion(sex, feline);
-            } catch (Exception e) {
-                assertTrue(e instanceof Exception); // Проверяем, что выброшено исключение
-                return;
-            }
-            // Если исключение не выброшено, тест должен завершиться неудачей
-            assertTrue("Ожидалось исключение", false);
-        } else {
-            lion = new Lion(sex, feline);
-            assertEquals(expectedHasMane, lion.doesHaveMane());
-        }
+        lion = new Lion(sex, feline);
+        assertEquals("Грива должна быть у самца.", expectedHasMane, lion.doesHaveMane());
     }
 
     // Проверяем, что конструктор выбрасывает исключение, если пол передан неверно
-//    @Test(expected = Exception.class)
-//    public void testLionConstructorThrowsExceptionForInvalidSex() throws Exception {
-//        lion = new Lion("Мужской", feline);
-//    }
-
+    @Test(expected = Exception.class)
+    public void testLionConstructorThrowsExceptionForInvalidSex() throws Exception {
+        lion = new Lion("Мужской", feline);
+    }
 
     // Проверяем, что метод getKittens без параметров возвращает 1
     @Test
