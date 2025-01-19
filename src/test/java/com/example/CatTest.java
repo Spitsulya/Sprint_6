@@ -34,27 +34,3 @@ public class CatTest {
         assertEquals("Коты должны мяукать", "Мяу", cat.getSound());
     }
 }
-
-
-
-
-
-
-
-
-//    @Before
-//    public void init() {
-//        MockitoAnnotations.initMocks(this);
-//    }
-//    Feline feline = Mockito.mock(Feline.class);
-//
-//    @Test
-//        public void testGetFood() throws Exception {
-//        List<String> expectedFood = Arrays.asList("Животные", "Птицы", "Рыба");
-//        Mockito.when(feline.eatMeat()).thenReturn(expectedFood);
-//
-//        // Проверяем, что метод getFood возвращает ожидаемый список
-//        Cat cat = new Cat(feline);
-//        List<String> actualFood = cat.getFood();
-//        assertEquals(expectedFood, actualFood);
-//    }
