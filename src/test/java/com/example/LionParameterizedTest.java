@@ -14,7 +14,7 @@ public class LionParameterizedTest {
 
     private String sex;
     private boolean expectedHasMane;
-    private Feline felineMock;
+    private Feline feline;
     private Lion lion;
 
     public LionParameterizedTest(String sex, boolean expectedHasMane) {
@@ -32,14 +32,14 @@ public class LionParameterizedTest {
 
     @Before
     public void setUp() throws Exception {
-        felineMock = Mockito.mock(Feline.class);
-        Mockito.when(felineMock.getKittens()).thenReturn(3); // Мокаем метод getKittens
-        lion = new Lion(sex, felineMock);
+        feline = Mockito.mock(Feline.class);
+        lion = new Lion(sex, feline);
     }
 
     // Проверяем, что если лев самец, то у него есть грива
     @Test
-    public void testDoesHaveMane() {
+    public void testDoesHaveMane() throws Exception {
+        lion = new Lion(sex, feline);
         assertEquals("Грива должна быть у самца.", expectedHasMane, lion.doesHaveMane());
     }
 }
