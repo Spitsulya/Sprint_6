@@ -9,22 +9,21 @@ import static org.junit.Assert.assertEquals;
 
 public class FelineTest {
 
+    private Feline feline;
+
     @Before
-    public void init() {
-        MockitoAnnotations.initMocks(this);
+    public void setUp() {
+    feline = new Feline();
     }
-    Animal animal = Mockito.mock(Animal.class);
-    Feline feline = new Feline();
+
 
     // Проверяем, что метод eatMeat возвращает ожидаемый результат
     @Test
     public void testEatMeat() throws Exception {
 
         List<String> expectedFood = Arrays.asList("Животные", "Птицы", "Рыба");
-        Mockito.when(animal.getFood("Хищник")).thenReturn(expectedFood);
-
         List<String> actualFood = feline.eatMeat();
-        assertEquals(expectedFood, actualFood);
+        assertEquals("Список пищи должен совпадать с ожидаемым.", expectedFood, actualFood);
     }
 
     // Проверяем, что метод getFamily возвращает "Кошачьи"
